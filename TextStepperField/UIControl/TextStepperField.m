@@ -58,11 +58,11 @@ UIEdgeInsets insetButtonImage={13,13,13,13};
     self.backgroundColor = [UIColor clearColor];
     self.multipleTouchEnabled = NO;
     self.clipsToBounds = YES;
-    CGSize BFStepperButton = CGSizeMake(45, self.frame.size.height);
+    CGSize BFStepperButton = CGSizeMake(26, self.frame.size.height);
     
     // middle image
     _middleImage = [[UIImageView alloc] init];
-    self.middleImage.frame = CGRectMake(BFStepperButton.width, 0, self.frame.size.width - (BFStepperButton.width*2), BFStepperButton.height);
+    self.middleImage.frame = CGRectMake(BFStepperButton.width, 0.5, self.frame.size.width - (BFStepperButton.width*2), BFStepperButton.height -1);
     [self.middleImage setImage:[[UIImage  imageNamed:@"UIStepperMiddle.png"]resizableImageWithCapInsets:insetMiddleImage]];
     self.middleImage.autoresizingMask = UIViewAutoresizingNone; //push to none
     self.middleImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleBottomMargin;
@@ -70,7 +70,7 @@ UIEdgeInsets insetButtonImage={13,13,13,13};
     
     // button minus in to left
     _minusButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.minusButton.frame = CGRectMake(0.0, 0.0, BFStepperButton.width, BFStepperButton.height);
+    self.minusButton.frame = CGRectMake(0, 0.0, BFStepperButton.width, BFStepperButton.height);
     [self.minusButton setBackgroundImage:[[UIImage imageNamed:@"UIStepperLeft.png"] resizableImageWithCapInsets:insetButtonImage] forState:UIControlStateNormal];
     [self.minusButton setBackgroundImage:[[UIImage imageNamed:@"UIStepperLeftPressed.png"] resizableImageWithCapInsets:insetButtonImage]forState:UIControlStateHighlighted];
     [self.minusButton setImage:[UIImage imageNamed:@"UIStepperMinus"] forState:UIControlStateNormal];
@@ -104,6 +104,7 @@ UIEdgeInsets insetButtonImage={13,13,13,13};
     self.textField.borderStyle = UITextBorderStyleNone;
     self.textField.placeholder = [self getPlaceholderText];
     self.textField.inputView = nil;
+    self.textField.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
     [self.textField setKeyboardType:UIKeyboardTypeDecimalPad];
     CGSize sizeField= [self.textField sizeThatFits:BFStepperButton];
     self.textField.frame = CGRectMake(BFStepperButton.width+5, (BFStepperButton.height - sizeField.height)/2,self.frame.size.width - (BFStepperButton.width*2)-10, sizeField.height);
